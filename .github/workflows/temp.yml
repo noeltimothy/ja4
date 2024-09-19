@@ -40,9 +40,9 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release create "test" linux-ja4/ja4.so#Linux
+      run: gh release create "test" linux-ja4#Linux
     - name: release2
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release upload "test" macos-ja4/ja4.so#Mac
+      run: gh release upload "test" macos-ja4#Mac
