@@ -28,25 +28,16 @@ jobs:
           name: upload-two
           path: one.txt
 
-  upload-all:
+  download-all:
     runs-on: ubuntu-latest
     needs: [ upload-one, upload-two ]
     steps:
     - name: Download a single artifact
       uses: actions/download-artifact@v4
-      with:
-          name: upload-one
+    - name: list
+      run: ls -al
     - name: release1
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release create "test" one.txt#Linux 
-    - name: Download a second artifact
-      uses: actions/download-artifact@v4
-      with:
-          name: upload-two
-    - name: release2
-      env:
-        GH_TOKEN: ${{ github.token }}
-        GH_REPO: ${{ github.repository }}
-      run: gh release upload "test" one.txt#Mac 
+      run: gh release create "test" upload-one upload-two
