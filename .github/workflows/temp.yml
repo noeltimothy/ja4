@@ -10,23 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: touch one
-      run: echo "one" > one.txt
+      run: touch ja4.so
     - name: upload-one
       uses: actions/upload-artifact@v4
       with:
-          name: upload-one
-          path: one.txt
+          name: linux-ja4
+          path: ja4.so
 
   upload-two:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - name: touch two
-      run: echo "two" > one.txt
+      run: touch ja4.so
     - name: upload-two
       uses: actions/upload-artifact@v4
       with:
-          name: upload-two
-          path: one.txt
+          name: macos-ja4
+          path: ja4.so
 
   download-all:
     runs-on: ubuntu-latest
@@ -40,4 +40,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release create "test" upload-one upload-two
+      run: gh release create "test" linux-ja4/ja4.so#Linux macos-ja4/ja4.so#Mac
