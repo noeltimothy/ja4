@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: touch one
-      run: touch ja4.so
+      run: echo "test" > ja4.so
     - name: upload-one
       uses: actions/upload-artifact@v4
       with:
@@ -21,7 +21,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: touch two
-      run: touch ja4.so
+      run: echo "new" > ja4.so
     - name: upload-two
       uses: actions/upload-artifact@v4
       with:
