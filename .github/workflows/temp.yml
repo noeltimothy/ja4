@@ -2,7 +2,7 @@ name: temp
 on:
   push:
     branches: [main]
-    paths: [wireshark/*, wireshark/source/*, wireshark/build-scripts/*]
+    paths: [.github/workflows/temp.yml]
   workflow_dispatch:
 
 jobs:
