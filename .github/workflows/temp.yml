@@ -40,4 +40,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release create "test" linux-ja4/ja4.so#Linux macos-ja4/ja4.so#Mac
+      run: gh release create "test" linux-ja4/ja4.so#Linux
