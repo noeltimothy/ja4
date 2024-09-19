@@ -13,13 +13,13 @@ jobs:
       uses: actions/checkout@v4
     - name: build
       run:  cd wireshark/build-scripts && sudo apt update -y && sudo apt install ninja-build -y && sudo ./linux_build.sh 4.4.0
-    - name: rename artifact
-      run: cp ./wireshark/build-scripts/wireshark-4.4.0/build/run/plugins/4.4/epan/ja4.so linux-ja4.so
+    #- name: rename artifact
+    #  run: cp ./wireshark/build-scripts/wireshark-4.4.0/build/run/plugins/4.4/epan/ja4.so linux-ja4.so
     - name: upload-linux-ja4
       uses: actions/upload-artifact@v4
       with:
           name: linux-ja4
-          path: linux-ja4.so
+          path: ./wireshark/build-scripts/wireshark-4.4.0/build/run/plugins/4.4/epan/ja4.so
     
   wireshark-macos:
     runs-on: macOS-latest
@@ -28,13 +28,13 @@ jobs:
       uses: actions/checkout@v4
     - name: build
       run:  cd wireshark/build-scripts && ./macos_build.sh 4.4.0
-    - name: rename artifact
-      run: cp ./wireshark/build-scripts/wireshark-4.4.0/build/run/Wireshark.app/Contents/PlugIns/wireshark/4-4/epan/ja4.so macos-ja4.so
+    #- name: rename artifact
+    #  run: cp ./wireshark/build-scripts/wireshark-4.4.0/build/run/Wireshark.app/Contents/PlugIns/wireshark/4-4/epan/ja4.so macos-ja4.so
     - name: upload-macos-ja4
       uses: actions/upload-artifact@v4
       with:
           name: macos-ja4
-          path: macos-ja4.so
+          path: ./wireshark/build-scripts/wireshark-4.4.0/build/run/Wireshark.app/Contents/PlugIns/wireshark/4-4/epan/ja4.so
           
   wireshark-windows:
     runs-on: windows-2022
@@ -109,4 +109,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
-      run: gh release create ${{ env.NOW }} linux-ja4.so macos-ja4.so ja4.dll
+      run: gh release create ${{ env.NOW }} linux-ja4 macos-ja4 windows-ja4
